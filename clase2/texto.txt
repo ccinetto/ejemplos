@@ -1,0 +1,10 @@
+Mac Signature Generation Steps
+1. Use HMAC SHA256 algorithm.
+2. Base string should be constructed using below parameters with following order and each
+followed by newline”\n” character(%x0A)
+a. client_id
+b. ts (timestamp in unix epoch format)
+c. nonce
+d. grant_type
+3. Use client_secret as key.
+4. Base 64 encoding on output raw data
