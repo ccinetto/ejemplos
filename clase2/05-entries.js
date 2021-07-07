@@ -9,6 +9,7 @@ console.log(Object.entries(salarios));
 
 const array = Object.entries(salarios).map(([key, value]) => [key, value * 2]);
 
+console.log(array);
 const newObj = Object.fromEntries(array);
 
 console.log(newObj);
