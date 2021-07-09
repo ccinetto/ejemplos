@@ -10,6 +10,6 @@ const func = (...argumentos) => {
   return [salida];
 };
 
-const resultado = func(1, 2, 3, 'pepe', 'juan', 4, 5, 6);
+const resultado = func(1, 2, 3, 'pepe', 'juan');
 
 console.log(resultado);

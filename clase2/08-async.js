@@ -10,6 +10,7 @@ const axios = require('axios');
 //     console.log(error);
 //   });
 
+// console.log('SUPUESTAMENTE ESTE ES EL FINAL DEL CODIGO');
 const funcionAsync = async () => {
   try {
     const resp = await axios.get('https://jsonplaceholder.typicode.com/posts');

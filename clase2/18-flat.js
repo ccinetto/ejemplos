@@ -20,6 +20,8 @@ const funciondelMap = (aValue) => [aValue, aValue ** 3 - 1];
 
 const array2 = [1, 2, 3];
 
-const salida = array2.flatMap(funciondelMap);
+console.log(array2.flatMap((aValue) => funciondelMap(aValue)));
 
-console.log(salida);
+// const salida = array2.flatMap(funciondelMap);
+
+// console.log(salida);

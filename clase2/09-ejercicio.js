@@ -1,5 +1,8 @@
 const func = (obj) => {
-  setInterval(() => console.log(Object.entries(obj)), 2000);
+  setInterval(() => {
+    console.log(new Date());
+    console.log(Object.entries(obj));
+  }, 2000);
 };
 
 const obj1 = {

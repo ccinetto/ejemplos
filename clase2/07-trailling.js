@@ -16,6 +16,8 @@ const array = [
   'Barcelona',
   'Manchester',
   'Colo Colo',
+  'Barcelona',
+  'Manchester City',
 ];
 
 const array = [1, 2, 3, 4, 5];

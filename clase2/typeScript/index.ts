@@ -1,4 +1,4 @@
-const isDone: Boolean = true;
+let isDone: Boolean = true;
 
 let decimal: Number = 10;
 
@@ -15,11 +15,11 @@ interface Jugador {
   seleccion: Boolean;
 }
 
-const obj: Jugador = {
+const obj = {
   nombre: 'Franco',
   apellido: 'Soldano',
   goles: 2500,
-  edad: 26,
+  edad: 25,
   seleccion: true,
 };
 

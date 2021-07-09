@@ -1,20 +1,20 @@
 const axios = require('axios');
 
-// const funcionAsync = async () => {
-//   try {
-//     const resp = await axios.get('https://jsonplaceholder.typicode.com/posts');
-//     console.log(resp);
-//   } catch (err) {
-//     console.log('HUBO UN ERROR');
-//     console.log(err.message);
-//   } finally {
-//     console.log('ESTO SE EJECUTA SI O SI');
-//   }
+const funcionAsync = async () => {
+  try {
+    const resp = await axios.get('https://sonplaceholder.typicode.com/posts');
+    console.log(resp.data[0]);
+  } catch (err) {
+    console.log('HUBO UN ERROR');
+    console.log(err.message);
+  } finally {
+    console.log('ESTO SE EJECUTA SI O SI');
+  }
 
-//   console.log('SIGO VIVO');
-// };
+  console.log('SIGO VIVO');
+};
 
-// funcionAsync();
+funcionAsync();
 
 axios
   .get('https://jsonplacholder.typicode.com/posts')

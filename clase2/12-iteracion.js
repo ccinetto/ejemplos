@@ -13,7 +13,7 @@ function somethingAsync(time) {
   return delay(time).then(() => Promise.resolve(i++));
 }
 
-const items = [1000, 2000, 3000, 4000];
+const items = [1000, 2000, 3000, 10000];
 
 (async () => {
   for await (const res of items.map((e) => somethingAsync(e))) {

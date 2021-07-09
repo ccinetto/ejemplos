@@ -1,5 +1,5 @@
-// //URL para probar Expresiones regulares y sus combinaciones
-// //https://regexr.com/
+//URL para probar Expresiones regulares y sus combinaciones
+//https://regexr.com/
 
 // const string = 'I am learning JavaScript not Java.';
 // const re = /Java[a-z]*/gi;

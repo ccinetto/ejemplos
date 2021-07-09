@@ -30,8 +30,8 @@ const persona1 = new Person('pepe', 'argento');
 
 persona1.getInfo();
 
-persona1.nombre = 'Jacinto';
-persona1.getInfo();
+// persona1.nombre = 'Jacinto';
+// persona1.getInfo();
 
 // persona1.#apellido = 'dsasadads';
 // persona1.getInfo();

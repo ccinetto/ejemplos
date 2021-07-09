@@ -1,0 +1,18 @@
+{
+  "name": "typeScript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": ".\\node_modules\\.bin\\tsc index",
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "typescript": "^4.3.5"
+  }
+}
