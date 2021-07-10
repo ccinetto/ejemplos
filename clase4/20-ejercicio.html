@@ -1,0 +1,46 @@
+</pre>
+<html>
+
+<head>
+  <!-- Esto seria como el import de la libreria. La Url se obtiene de aca
+  https://www.npmjs.com/package/rxjs
+  -->
+  <script type="text/javascript" src="https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js"></script>
+
+  <!-- Este es el codigo que vamos a ejecutar -->
+  <script type="text/javascript">
+
+    const { Observable } = rxjs;
+
+    function contador(ini) {
+      let cont = ini;
+
+      return new Observable((subscriber) => {
+        setInterval(() => {
+          subscriber.next(cont++);
+        }, 1000);
+      })
+    }
+
+    function contadorPromise(ini) {
+      let cont = ini;
+
+      return new Promise((resolve, reject) => {
+        setInterval(() => {
+          resolve(cont++);
+        }, 1000);
+      })
+    }
+
+
+    contador(123)
+      .subscribe((x) => console.log(`DATA DEL OBSERVABLE => ${x}`))
+
+    contadorPromise(123)
+      .then((x) => console.log(`DATA DEL PROMISE => ${x}`))
+
+  </script>
+</head>
+
+</html>
+<pre>

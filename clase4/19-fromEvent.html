@@ -1,0 +1,38 @@
+</pre>
+<html>
+
+<head>
+  <!-- Esto seria como el import de la libreria. La Url se obtiene de aca
+  https://www.npmjs.com/package/rxjs
+  -->
+  <script type="text/javascript" src="https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js"></script>
+
+  <!-- Este es el codigo que vamos a ejecutar -->
+  <script type="text/javascript">
+
+    //Esta funcion se va a llamar cuando se termine de cargar la ventana
+    window.onload = function () {
+
+      //Referencio en una variable al Boton que definimos en el body
+      //Para acceder a el usamos su ID
+      var boton = document.getElementById('miboton');
+
+      //En pulsaciones definimos el observable, el cual va a emitirnos la data cada vez
+      //Que hagamos click
+      var pulsaciones = rxjs.fromEvent(boton, 'click');
+
+      //Nos subscribimos a la data que nos manda el observable
+      pulsaciones.subscribe(e => {
+        console.log('has pulsado', e);
+      });
+
+    }
+  </script>
+</head>
+
+<body>
+  <input type="button" value="pulsame" id="miboton" />
+</body>
+
+</html>
+<pre>

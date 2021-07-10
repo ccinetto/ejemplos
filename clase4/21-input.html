@@ -1,0 +1,90 @@
+</pre>
+<html>
+
+<head>
+  <!-- Esto seria como el import de la libreria. La Url se obtiene de aca
+  https://www.npmjs.com/package/rxjs
+  -->
+  <script type="text/javascript" src="https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js"></script>
+
+  <!-- Este es el codigo que vamos a ejecutar -->
+  <script type="text/javascript">
+    const { Observable, fromEvent, map } = rxjs;
+
+    function reverseString(str) {
+      return str.split("").reverse().join("");
+    }
+
+    window.onload = function () {
+
+      const input = document.getElementById('entrada');
+      const output = document.getElementById('salida');
+
+      const miCustomObservable = new Observable((observable) => {
+        input.addEventListener('input', (e) => {
+          console.log(input.value)
+          if (input.value == 'error')
+            observable.error('Ingresaron Error');
+
+          if (input.value == 'complete')
+            observable.complete()
+
+          if (e.data == null) {
+            salida = output.value.substring(1)
+          }
+          else {
+            salida = reverseString(output.value);
+            salida += e.data;
+            salida = reverseString(salida)
+          }
+
+          observable.next(salida)
+        })
+      })
+
+      const miFuncionNext = (data) => {
+        output.value = data;
+      }
+
+      const miFuncionComplete = () => {
+        console.log(`COMPLETE`);
+        input.disabled = true;
+        input.value = '';
+        output.value = '';
+        sub.unsubscribe();
+      }
+
+      const miFuncionError = (msg) => {
+        console.log(`ERROR ===> ${msg}`);
+        input.disabled = true;
+        input.value = '';
+        output.value = '';
+        sub.unsubscribe();
+      }
+
+      const handler = {
+        next: miFuncionNext,
+        error: miFuncionError,
+        complete: miFuncionComplete,
+      }
+
+
+      const sub = miCustomObservable.subscribe(handler)
+
+      setTimeout(() => {
+        console.log("YA me canse de escuchar");
+        sub.unsubscribe();
+      }, 10000)
+
+    }
+  </script>
+</head>
+
+<body>
+  <input type="text" value="" id="entrada">
+  <br />
+  <input type="text" value="" id="salida">
+</body>
+
+</html>
+<pre>
