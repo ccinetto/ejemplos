@@ -8,8 +8,11 @@ function* numeroRandom(min, max) {
 }
 
 const numRandomObj = numeroRandom(0, 1000);
+console.log(numRandomObj);
 
-const num1 = numRandomObj.next().value;
+const resultado = numRandomObj.next();
+console.log(resultado);
+const num1 = resultado.value;
 console.log(num1);
 
 const num2 = numRandomObj.next().value;

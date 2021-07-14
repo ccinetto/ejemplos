@@ -8,12 +8,16 @@ const operacion = (a: number, b: number, op: string) => {
 };
 
 const operaciones = () => {
-  operacion(2, 4, 'suma').then((resultado) => {
-    console.log(resultado);
-  });
-  operacion(2, 4, 'resta').then((resultado) => {
-    console.log(resultado);
-  });
+  operacion(2, 4, 'suma')
+    .then((resultado1) => {
+      console.log(resultado1);
+
+      return operacion(2, 4, 'resta');
+    })
+    .then((resultado2) => {
+      console.log(resultado2);
+      console.log('FIN');
+    });
 };
 
 operaciones();

@@ -20,9 +20,13 @@
       const input = document.getElementById('entrada');
       const output = document.getElementById('salida');
 
+
       const miCustomObservable = new Observable((observable) => {
+
+        let salida;
+
         input.addEventListener('input', (e) => {
-          console.log(input.value)
+          console.log(e)
           if (input.value == 'error')
             observable.error('Ingresaron Error');
 

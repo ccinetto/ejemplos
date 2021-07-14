@@ -5,7 +5,7 @@ fs.readdir(__dirname)
     console.log(archivos);
     if (archivos.includes('texto.txt')) {
       console.log('Existe el archivo. Vamos a leerlo');
-      return fs.readFile('tto.txt');
+      return fs.readFile('texto.txt');
     } else {
       console.log('No Existe el archivo. Tiro error');
       throw new Error('No existe el archivo');

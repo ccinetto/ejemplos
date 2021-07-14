@@ -14,7 +14,7 @@ jugador[Symbol.iterator] = function () {
     next: () => {
       index++;
       const done = index >= values.length;
-      // console.log('CONTEXTO', index, values[index]);
+      console.log('CONTEXTO', index, values[index]);
       return {
         value: done ? undefined : values[index],
         done,
@@ -24,5 +24,5 @@ jugador[Symbol.iterator] = function () {
 };
 
 for (let aValue of jugador) {
-  console.log(aValue);
+  console.log('RESULTADO ==>', aValue);
 }

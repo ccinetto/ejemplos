@@ -4,6 +4,7 @@ function* numeroRandom(min, max) {
     console.log(`CONTEXTO => Contador = ${contador}`);
     contador++;
     const output = {
+      fyh: new Date(),
       counter: contador,
       result: Math.floor(Math.random() * (max - min) + min),
     };
@@ -13,10 +14,10 @@ function* numeroRandom(min, max) {
 
 const numRandomObj = numeroRandom(0, 1000);
 
-for (let call of numRandomObj) {
-  const data = call;
+for (let pepito of numRandomObj) {
+  const data = pepito;
   console.log(data);
-  if (data.result > 800 || data.counter >= 10) break;
+  if (data.result > 1100 || data.counter >= 10) break;
 }
 
 console.log('Fin');

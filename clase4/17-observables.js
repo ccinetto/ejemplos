@@ -12,7 +12,7 @@ const miObservable = new Observable((observer) => {
   }, 2000);
 
   // Probar comentando y descomentando esta linea
-  // observer.error('Me rompi');
+  observer.error('Me rompi');
 });
 
 const handler = {

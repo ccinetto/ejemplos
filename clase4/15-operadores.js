@@ -4,7 +4,8 @@ const { map } = require('rxjs/operators');
 const miObservable = new Observable((observer) => {
   let count = 0;
   const interval = setInterval(() => {
-    observer.next(count++);
+    count += 1;
+    observer.next(count);
   }, 1000);
 
   // once we stop listening to values clear the interval
@@ -16,5 +17,11 @@ const miObservable = new Observable((observer) => {
 });
 
 miObservable
-  .pipe(map((data) => data ** 2))
+  .pipe(
+    map((data) => {
+      // console.log('RECIBI EL DATO', data);
+      // console.log('VOY A TRANSFORMARLO A', data ** 2);
+      return data ** 2;
+    })
+  )
   .subscribe((value) => console.log(value));

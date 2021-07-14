@@ -2,8 +2,10 @@ const { Observable } = require('rxjs');
 
 const miObservable = new Observable((pepito) => {
   console.log(pepito);
+  let index = 0;
   setInterval(() => {
-    pepito.next('Hello from a Observable!');
+    index += 1;
+    pepito.next(`Te entrega el dato ${index}`);
   }, 2000);
 });
 

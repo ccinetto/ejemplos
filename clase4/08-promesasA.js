@@ -17,7 +17,8 @@ const funcionNumero = new Promise((resolve, reject) => {
 //Forma de trabajar con promesas
 funcionNumero
   .then((resultado) => {
-    console.log(`EL resultado es ${resultado}`);
+    console.log('ENTRE AL THEN');
+    console.lg(`EL resultado es ${resultado}`);
   })
   .catch((err) => {
     console.log(`Hubo un Error: ${err}`);
