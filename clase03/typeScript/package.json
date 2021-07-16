@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": ".\\node_modules\\.bin\\tsc index",
+    "compile": "tsc index",
+    "type": "tsc",
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

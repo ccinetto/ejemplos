@@ -1,4 +1,5 @@
-const fs = require('fs');
+// const fs = require('fs');
+import fs from 'fs';
 
 const miCallBack = (err, data) => {
   if (err) {
@@ -12,3 +13,5 @@ const miCallBack = (err, data) => {
 };
 
 fs.readFile('hola.txt', miCallBack);
+
+console.log('Sigo con las lineas');

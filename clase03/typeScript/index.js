@@ -1,19 +1,26 @@
-var operacion = function (a, b, op) {
-    return new Promise(function (resolve, reject) {
-        Promise.resolve().then(function () { return require('./misFunciones.js'); }).then(function (modulo) {
-            if (op == 'suma')
-                resolve(modulo.suma(a, b));
-            else
-                resolve(modulo.resta(a, b));
-        });
-    });
-};
-var operaciones = function () {
-    operacion(2, 4, 'suma').then(function (resultado) {
-        console.log(resultado);
-    });
-    operacion(2, 4, 'resta').then(function (resultado) {
-        console.log(resultado);
-    });
-};
-operaciones();
+func;
+saludar(nombre);
+{
+    console.log("HOLA UN GUSTO " + saludar);
+}
+console.log(saludar('pepe'));
+// const operacion = (a: number, b: number, op: string) => {
+//   return new Promise((resolve, reject) => {
+//     import('./misFunciones.js').then((modulo) => {
+//       if (op == 'suma') resolve(modulo.suma(a, b));
+//       else resolve(modulo.resta(a, b));
+//     });
+//   });
+// };
+// const operaciones = () => {
+//   operacion(2, 4, 'suma')
+//     .then((resultado1) => {
+//       console.log(resultado1);
+//       return operacion(2, 4, 'resta');
+//     })
+//     .then((resultado2) => {
+//       console.log(resultado2);
+//       console.log('FIN');
+//     });
+// };
+// operaciones();

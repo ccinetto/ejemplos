@@ -1,17 +1,20 @@
 {
-  "name": "typeScript",
+  "name": "primerproyecto",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "compile": "tsc index",
-    "start": "node index",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
   "devDependencies": {
+    "nodemon": "^2.0.12",
     "typescript": "^4.3.5"
   }
 }
