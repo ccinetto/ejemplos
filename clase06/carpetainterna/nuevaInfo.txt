@@ -1,0 +1,19 @@
+{
+	"contenidoStr": "{\"name\":\"clase06\",\"version\":\"1.0.0\",\"description\":\"\",\"main\":\"00-lectura.js\",\"scripts\":{\"test\":\"echo \\\"Error: no test specified\\\" && exit 1\"},\"keywords\":[],\"author\":\"CoderHouse\",\"license\":\"ISC\"}",
+	"contenidoObj": {
+		"contenidoStr": "{\n  \"name\": \"clase06\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"00-lectura.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\"\n}\n",
+		"contenidoObj": {
+			"name": "clase06",
+			"version": "1.0.0",
+			"description": "",
+			"main": "00-lectura.js",
+			"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1"
+			},
+			"keywords": [],
+			"author": "CoderHouse",
+			"license": "ISC"
+		},
+		"size": 226
+	}
+}
