@@ -26,6 +26,7 @@ let products: Product[] = [
 // @desc Get Products
 // @route Get /api/products
 const getProducts = async (request: any, response: any) => {
+  console.log("ENTREEE")
   await response.json({
     error: false,
     data: products,
@@ -35,7 +36,7 @@ const getProducts = async (request: any, response: any) => {
 // @desc Get Single Product
 // @route Get /api/products/:id
 const getProduct = async (request: any, response: any) => {
-  console.log(request.params);
+  console.log("PARAMS => ", request.params);
   const product: Product | undefined = products.find(
     (p) => p.id === request.params.id
   );
@@ -56,7 +57,7 @@ const getProduct = async (request: any, response: any) => {
 // @desc Add product
 // @route Post /api/products
 const addProduct = async (request: any, response: any) => {
-  //   console.log(await request.data);
+  console.log("BODY => ", request.data);
   if (!request.data) {
     response.status = 400;
     response.json({
@@ -64,7 +65,7 @@ const addProduct = async (request: any, response: any) => {
       message: "No data",
     });
   } else {
-    const product: Product = await request.data;
+    const product: Product = request.data;
     product.id = v4.generate();
     products.push(product);
     response.json({
@@ -77,8 +78,8 @@ const addProduct = async (request: any, response: any) => {
 // @desc Update Product
 // @route PUT /api/products/:id
 const updateProduct = async (request: any, response: any) => {
-  const id_param = await request.params.id;
-  const data = await request.data;
+  const id_param = request.params.id;
+  const data = request.data;
   const product: Product | undefined = products.find((p) => p.id === id_param);
 
   if (product) {
@@ -108,7 +109,7 @@ const updateProduct = async (request: any, response: any) => {
 // @desc Delete Product
 // @route DELETE /api/product/:id
 const deleteProduct = async (request: any, response: any) => {
-  const id_param = await request.params.id;
+  const id_param = request.params.id;
   products = products.filter((p) => p.id !== id_param);
   response.json({
     error: false,

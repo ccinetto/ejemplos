@@ -7,10 +7,15 @@ import {
   findAllUsers,
 } from "../handlers/index.ts";
 
-export const router = new Router()
+const router = new Router()
   //User routes
   .get("/api/users", findAllUsers)
   .get("/api/users/:userId", findUser)
   .delete("/api/users/:userId", deleteUser)
   .patch("/api/users", updateUser)
   .post("/api/users", createUser);
+
+
+const rutas = router.routes();
+
+export default rutas;

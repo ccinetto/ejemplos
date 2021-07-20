@@ -5,26 +5,33 @@ const { MONGO_USERNAME, MONGO_PSW, MONGO_PRIMARY_CLUSTER, MONGO_DBNAME } = confi
 
 // Mongo Connection Init
 const connectToMongo = async (collection: string) => {
-  const client = new MongoClient();
 
-  const db = await client.connect({
-    db: MONGO_DBNAME,
-    tls: true,
-    servers: [
-      {
-        host: MONGO_PRIMARY_CLUSTER,
-        port: 27017,
-      }
-    ],
-    credential: {
-      username: MONGO_USERNAME,
-      password: encodeURIComponent(MONGO_PSW),
+  let output = null;
+
+  if(!output){
+    const client = new MongoClient();
+
+    const db = await client.connect({
       db: MONGO_DBNAME,
-      mechanism: 'SCRAM-SHA-1',
-    },
-  });
+      tls: true,
+      servers: [
+        {
+          host: MONGO_PRIMARY_CLUSTER,
+          port: 27017,
+        }
+      ],
+      credential: {
+        username: MONGO_USERNAME,
+        password: encodeURIComponent(MONGO_PSW),
+        db: MONGO_DBNAME,
+        mechanism: 'SCRAM-SHA-1',
+      },
+    });
 
-  return db.collection(collection);
+    output = db;
+  }
+  
+  return output.collection(collection);
 }
 
 // @description: GET all Quotes
@@ -33,7 +40,8 @@ const getQuotes = async (ctx: Context) => {
   const {response} = ctx;
   try {
     const quotes = await connectToMongo('quotes');
-    const allQuotes = await quotes.find({});
+    console.log("ENTREEE")
+    const allQuotes = await quotes.find({},);
     console.log(allQuotes);
     if (allQuotes) {
       response.status = 200;
@@ -66,7 +74,6 @@ const getQuote = async (ctx: Context) => {
   const { id } = helpers.getQuery(ctx, { mergeParams: true });
   try{
     console.log(id)
-    const quotes = await connectToMongo('quotes');
     const quote = await quotes.findOne({ quoteID: id }, {noCursorTimeout : false} as any);
   
     if (quote) {
@@ -151,6 +158,13 @@ const updateQuote = async (ctx: Context) => {
 // @description: DELETE single quote
 // @route DELETE /api/quotes/:id
 
+
+/**
+ * Este es el handler que se va a encragar de borrar un documento en mi Base de Datos
+ * Primero hace esto, luego hace esto otro, si pasa esto hago tal cosa, sino sigo de largo
+ * finalmente retorno esto
+ * 
+ */
 const deleteQuote = async (ctx: Context) => {
   const {request, response} = ctx;
   try {

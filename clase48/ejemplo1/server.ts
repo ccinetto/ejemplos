@@ -18,7 +18,7 @@ app.use(expressive.simpleLog());
 app.use(expressive.bodyParser.json());
 
 //Creacion de las rutas
-app.get("/api/products", getProducts);
+app.get("/api/products/", getProducts);
 app.get("/api/products/{id}", getProduct);
 app.post("/api/products", addProduct);
 app.put("/api/products/{id}", updateProduct);

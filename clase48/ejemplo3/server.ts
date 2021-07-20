@@ -8,6 +8,5 @@ const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-console.log(`Server escuchando en el puerto ${PORT}`);
-
 await app.listen({ port: Number(PORT) });
+console.log(`Server escuchando en el puerto ${PORT}`);
