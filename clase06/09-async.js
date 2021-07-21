@@ -9,7 +9,7 @@ const main = async () => {
       size: undefined,
     };
 
-    const data = await fs.readFile('./package.json');
+    const data = await fs.readFile('./packagesadsads.json');
     const stats = await fs.stat('./package.json');
     info.contenidoStr = data.toString();
     info.contenidoObj = JSON.parse(data);
@@ -23,7 +23,18 @@ const main = async () => {
     console.log('FIN PROCESO');
   } catch (err) {
     console.log('ERROR ==>', err);
+    throw new Error(err);
   }
 };
 
-main();
+console.log('LINEA INICIAL');
+main()
+  .then(() => {
+    console.log('LINEA FINAL');
+  })
+  .catch((err) => {
+    console.log('ATAJE EL ERROR', err);
+  })
+  .finally(() => {
+    console.log('ESTO SE EJECUTA SI O SI');
+  });

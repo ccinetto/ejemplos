@@ -7,9 +7,9 @@ const info = {
   size: undefined,
 };
 
-fs.readFile('./package.json')
+fs.readFile('./package.json', 'utf-8')
   .then((fileData) => {
-    info.contenidoStr = fileData.toString();
+    info.contenidoStr = fileData;
     info.contenidoObj = JSON.parse(fileData);
     return fs.stat('./package.json');
   })

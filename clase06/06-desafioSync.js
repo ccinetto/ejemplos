@@ -1,12 +1,15 @@
 const fs = require('fs');
 
 try {
-  const data = fs.readFileSync('./package.json');
+  const data = fs.readFileSync('./package.json', 'utf-8');
 
-  const miDataString = data.toString();
+  const miDataString = data;
   const miObjeto = JSON.parse(data);
 
   const stats = fs.statSync('./package.json');
+  console.log(stats);
+  console.log(stats.isFile());
+  console.log(stats.isDirectory());
   const size = stats.size;
 
   const info = {

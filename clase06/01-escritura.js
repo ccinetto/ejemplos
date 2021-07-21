@@ -20,3 +20,21 @@ fs.writeFile(pathArchivoAsync, dataAsync, (err, salida) => {
 
   console.log('DONE');
 });
+
+// fs.writeFile(pathArchivoAsync, 'dato2', (err, salida) => {
+//   if (err) console.log('Error Escritura Asincronica', err);
+
+//   console.log('DONE');
+// });
+
+// fs.writeFile(pathArchivoAsync, 'dato3', (err, salida) => {
+//   if (err) console.log('Error Escritura Asincronica', err);
+
+//   console.log('DONE');
+// });
+
+// fs.writeFile(pathArchivoAsync, 'dato4', (err, salida) => {
+//   if (err) console.log('Error Escritura Asincronica', err);
+
+//   console.log('DONE');
+// });

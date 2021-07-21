@@ -14,7 +14,8 @@ fs.readFile(filePath)
 
     const newInfo = {
       contenidoStr: JSON.stringify(dataString),
-      contenidoObj: objectInfo,
+      contenidoObj: objectInfo.contenidoObj,
+      size: objectInfo.size,
     };
 
     return fs.writeFile(
