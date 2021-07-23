@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 
-const puerto = 8080;
+const puerto = 6000;
 
 const app = express();
 
@@ -14,14 +14,22 @@ server.on('error', (err) => {
 });
 
 // ENVIO DE UN HTML BASICO USANDO EXPRESS
-app.get('/', (request, response) => {
+app.get('/mihtml', (request, response) => {
   const myfilePath = path.resolve(__dirname, './views/vista1.html');
   response.sendFile(myfilePath);
 });
 
+// //RESPUESTA EN FORMATO JSON (API)
+// app.get('/', (request, response) => {
+//   console.log(request.query);
+//   response.json({
+//     msg: 'Hola Mundo desde el main',
+//   });
+// });
+
 //RESPUESTA EN FORMATO JSON (API)
-app.get('/api/holamundo', (request, response) => {
+app.post('/api/holamundo', (request, response) => {
   response.json({
-    msg: 'Hola Mundo',
+    msg: 'Hola Mundo desde /api/holamundo',
   });
 });

@@ -33,7 +33,7 @@ app.get('/visitas', (request, response) => {
 //EJERCICIO3
 app.get('/fyh', (request, response) => {
   visitas++;
-  response.json({
+  response.send({
     fyh: new Date(),
   });
 });

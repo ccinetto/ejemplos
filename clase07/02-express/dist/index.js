@@ -1,15 +1,35 @@
 "use strict";
 
-var _moment = _interopRequireDefault(require("moment"));
+var _express = _interopRequireDefault(require("express"));
+
+var _path = _interopRequireDefault(require("path"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// require
-var miCumple = (0, _moment["default"])('07-11-1993', 'DD-MM-YYYY');
-var now = (0, _moment["default"])();
-console.log('Hoy es', now.format('DD-MM-YYYY'));
-console.log('Naci el', miCumple.format('DD-MM-YYYY'));
-var diferenciaDias = now.diff(miCumple, 'days');
-var diferenciaAnios = now.diff(miCumple, 'years');
-console.log("Desde mi nacimiento han pasado ".concat(diferenciaAnios, " a\xF1os"));
-console.log("Desde mi nacimiento han pasado ".concat(diferenciaDias, " dias"));
+var puerto = 6000;
+var app = (0, _express["default"])();
+var server = app.listen(puerto, function () {
+  return console.log('Server Up en puerto', puerto);
+});
+server.on('error', function (err) {
+  console.log('ERROR =>', err);
+}); // ENVIO DE UN HTML BASICO USANDO EXPRESS
+
+app.get('/mihtml', function (request, response) {
+  var myfilePath = _path["default"].resolve(__dirname, './views/vista1.html');
+
+  response.sendFile(myfilePath);
+}); // //RESPUESTA EN FORMATO JSON (API)
+// app.get('/', (request, response) => {
+//   console.log(request.query);
+//   response.json({
+//     msg: 'Hola Mundo desde el main',
+//   });
+// });
+//RESPUESTA EN FORMATO JSON (API)
+
+app.post('/api/holamundo', function (request, response) {
+  response.json({
+    msg: 'Hola Mundo desde /api/holamundo'
+  });
+});
