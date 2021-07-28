@@ -68,8 +68,7 @@ app.get('/productos/:id', (req, res) => {
 
   /** En caso de no encontrar el producto, respondemos con codigo 404 para indicar el error */
   if (!producto) {
-    res.status = 404;
-    return res.json({
+    return res.status(404).json({
       msg: 'Product not found',
     });
   }
@@ -102,8 +101,7 @@ app.post('/productos', (req, res) => {
     typeof body.nombre != 'string' ||
     typeof body.precio != 'number'
   ) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       msg: 'Necesito en el body el nombre (string) y el precio (number)',
     });
   }
@@ -117,8 +115,7 @@ app.post('/productos', (req, res) => {
   productos.push(nuevoProducto);
 
   /**Estado 201: Objeto creado correctamente */
-  res.status = 201;
-  res.json({
+  res.status(201).json({
     data: nuevoProducto,
   });
 });
@@ -140,8 +137,7 @@ app.put('/productos/:id', (req, res) => {
   console.log(posicion);
   /** En caso de no encontrar el producto, respondemos con codigo 404 para indicar el error */
   if (posicion == -1) {
-    res.status = 404;
-    return res.json({
+    return res.status(404).json({
       msg: 'Product not found',
     });
   }
@@ -153,8 +149,7 @@ app.put('/productos/:id', (req, res) => {
     typeof body.nombre != 'string' ||
     typeof body.precio != 'number'
   ) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       msg: 'Necesito en el body el nombre (string) y el precio (number)',
     });
   }
@@ -163,8 +158,7 @@ app.put('/productos/:id', (req, res) => {
   productos[posicion].precio = body.precio;
 
   /**Estado 201: Objeto creado correctamente */
-  res.status = 201;
-  res.json({
+  res.status(201).json({
     data: productos[posicion],
   });
 });

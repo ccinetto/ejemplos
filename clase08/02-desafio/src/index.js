@@ -30,8 +30,7 @@ app.get('/api/getLetra/:num', (req, res) => {
   const numeroLetra = parseInt(req.params.num);
 
   if (numeroLetra < 0 || numeroLetra > frase.length) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       error: 'El parámetro está fuera de rango',
     });
   }
@@ -46,8 +45,7 @@ app.get('/api/getPalabra/:num', (req, res) => {
   const palabras = frase.split(' ');
 
   if (numeroPalabra < 0 || numeroPalabra > palabras.length) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       error: 'El parámetro está fuera de rango',
     });
   }

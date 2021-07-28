@@ -31,8 +31,7 @@ app.get('/api/leer/:pos', (req, res) => {
 
   const palabras = frase.split(' ');
   if (posicion < 1 || posicion > palabras.length) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       error: 'El parámetro está fuera de rango',
     });
   }
@@ -60,8 +59,7 @@ app.put('/api/actualizar/:pos', (req, res) => {
 
   const palabras = frase.split(' ');
   if (posicion < 1 || posicion > palabras.length) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       error: 'El parámetro está fuera de rango',
     });
   }
@@ -75,21 +73,12 @@ app.put('/api/actualizar/:pos', (req, res) => {
   });
 });
 
-function removeItemOnce(arr, index) {
-  // var index = arr.indexOf(value);
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  return arr;
-}
-
 app.delete('/api/borrar/:pos', (req, res) => {
   const posicion = parseInt(req.params.pos) - 1;
 
   const palabras = frase.split(' ');
   if (posicion < 1 || posicion > palabras.length) {
-    res.status = 400;
-    return res.json({
+    return res.status(400).json({
       error: 'El parámetro está fuera de rango',
     });
   }

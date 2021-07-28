@@ -1,10 +1,5 @@
 import express from 'express';
 
-/**
- * DATOS A MANIPULAR
- */
-let frase = 'Hola mundo como estan';
-
 /** INICIALIZACION API con EXPRESS */
 const app = express();
 const puerto = 8080;
