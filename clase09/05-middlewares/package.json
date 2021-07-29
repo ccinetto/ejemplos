@@ -1,12 +1,11 @@
 {
-  "name": "desafio2",
+  "name": "05-middlewares",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "transpile": "babel src --out-dir dist",
     "start": "node ./dist/index.js",
-    "build:start": "npm run transpile && npm run start",
     "dev": "nodemon --exec babel-node ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +20,7 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "moment": "^2.29.1"
   }
 }
