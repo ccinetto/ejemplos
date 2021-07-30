@@ -7,7 +7,12 @@ let mascotas = [];
 
 const router = express.Router();
 
-router.get('/listar', (req, res) => {
+const funcion5 = (req, res, next) => {
+  console.log('Entrando a funcion5');
+  next();
+};
+
+router.get('/listar', funcion5, (req, res) => {
   res.json({
     mascotas,
   });
