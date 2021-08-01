@@ -1,0 +1,16 @@
+html 
+  head 
+    title ejemplo3
+    link(rel="stylesheet" href="style.css")
+  body
+    div
+      h1 lista super 
+      ul
+        each val in miarraydeInfo
+          li.toplaner= val 
+      if mostrarLista2
+        ul
+          each val in listaObjetos
+            li(class= val.style)= val.name
+        p Info iteraciones => https://pugjs.org/language/iteration.html
+        p Info Condicionales => https://www.nodejsera.com/library/pug/pug-conditionals.html
