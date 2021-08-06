@@ -1,0 +1,10 @@
+{{#if mostrarCosas}}
+<p>LISTA COSAS PARA HACER de {{nombre}} - {{apellido}}</p>
+<ul>
+  {{#each listaCosas}}
+    <li class={{estilo}}> {{tarea}} </li>
+  {{/each}}
+</ul>
+{{else}}
+<p>NO TE MUESTRO LA LISTA DE COSAS</p>
+{{/if}}

@@ -3,7 +3,7 @@ li {
   width: 300px;
   margin: 4px;
   padding: 4px;
-  list-style: none
+  /* list-style: none */
 }
 
 /*estilos personalizados*/

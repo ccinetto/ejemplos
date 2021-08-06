@@ -1,0 +1,11 @@
+{{#if mostrarMercado}}
+
+<p>LISTA SUPER de {{nombre}} - {{apellido}}</p>
+<ul>
+  {{#each listaMercado }}
+  <li>{{this}}</li>
+  {{/each}}
+</ul>
+{{else}}
+<p>NO TE MUESTRO LA LISTA DEL SUPER</p>
+{{/if}}

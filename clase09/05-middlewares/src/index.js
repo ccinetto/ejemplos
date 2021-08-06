@@ -41,7 +41,7 @@ app.use(funcion2);
 app.use('/api/mascotas', funcion3, routerMascotas);
 app.use('/api/personas', funcion4, routerPersonas);
 
-// app.use(function (err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).send({ msg: 'Something broke!', err: err.message });
-// });
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send({ msg: 'Something broke!', err: err.message });
+});

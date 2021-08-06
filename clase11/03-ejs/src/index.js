@@ -32,7 +32,7 @@ app.get('/eje3', (req, res) => {
     titulo: 'titulo dinamico',
     mensaje: 'Mi Mensaje dinamico con estilo',
     listaSuper: ['mate', 'cafe', 'harina', 'palmitos'],
-    mostrarLista: false,
+    mostrarLista: true,
   };
   res.render('ejemplo3', data);
 });
