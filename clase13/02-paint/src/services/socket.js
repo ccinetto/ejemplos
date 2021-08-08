@@ -1,5 +1,5 @@
 import socketIo from 'socket.io';
-import { getLineHistory, addNewLine } from '../utils/lines';
+import { getLineHistory, addNewLine, resetHistory } from '../utils/lines';
 
 export const initWsServer = (server) => {
   const io = socketIo(server);
@@ -22,6 +22,11 @@ export const initWsServer = (server) => {
       addNewLine(line);
       // console.log(line);
       io.emit('new-line', data);
+    });
+
+    socket.on('reset', () => {
+      resetHistory();
+      io.emit('reset');
     });
   });
 

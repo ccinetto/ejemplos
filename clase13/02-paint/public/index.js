@@ -7,6 +7,7 @@ let mouse = {
 
 const canvas = document.getElementById('drawing');
 const context = canvas.getContext('2d');
+const resetButton = document.getElementById('reset');
 
 //Seteo ancho y alto del canvas al tamaño real de la pantalla
 const width = window.innerWidth;
@@ -62,4 +63,13 @@ socket.on('new-line', (data) => {
   context.moveTo(beginLine.x * width, beginLine.y * height);
   context.lineTo(endLine.x * width, endLine.y * height);
   context.stroke();
+});
+
+resetButton.addEventListener('click', (e) => {
+  socket.emit('reset');
+});
+
+socket.on('reset', () => {
+  console.log('RESSET');
+  context.clearRect(0, 0, canvas.width, canvas.height);
 });
