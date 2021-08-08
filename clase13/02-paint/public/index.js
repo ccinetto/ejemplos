@@ -8,6 +8,7 @@ let mouse = {
 const canvas = document.getElementById('drawing');
 const context = canvas.getContext('2d');
 const resetButton = document.getElementById('reset');
+const color = document.getElementById('color');
 
 //Seteo ancho y alto del canvas al tamaño real de la pantalla
 const width = window.innerWidth;
@@ -41,6 +42,7 @@ setInterval(() => {
     console.log('DIBUJANDO');
     const data = {
       line: [mouse.pos, mouse.pos_prev],
+      color: color.value,
     };
     socket.emit('new-line', data);
   }
@@ -53,8 +55,7 @@ setInterval(() => {
 }, 25);
 
 socket.on('new-line', (data) => {
-  const { line } = data;
-
+  const { line, color } = data;
   const [beginLine, endLine] = line;
 
   //Dibujar linea
@@ -62,6 +63,7 @@ socket.on('new-line', (data) => {
   context.lineWidth = 2;
   context.moveTo(beginLine.x * width, beginLine.y * height);
   context.lineTo(endLine.x * width, endLine.y * height);
+  context.strokeStyle = color;
   context.stroke();
 });
 

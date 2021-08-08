@@ -10,17 +10,13 @@ export const initWsServer = (server) => {
     //Le envio a cada nueva conexion el historial actual asi puede ver lo que ya se dibujo
     const history = getLineHistory();
     for (let aLine of history) {
-      const newData = {
-        line: aLine,
-      };
-      socket.emit('new-line', newData);
+      socket.emit('new-line', aLine);
     }
 
     //Recibo una linea Nueva
     socket.on('new-line', (data) => {
-      const { line } = data;
-      addNewLine(line);
-      // console.log(line);
+      console.log(data);
+      addNewLine(data);
       io.emit('new-line', data);
     });
 
