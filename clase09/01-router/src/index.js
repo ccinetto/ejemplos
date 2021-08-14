@@ -1,6 +1,5 @@
 import express from 'express';
-import Pepito from './routes/recurso1';
-import bokitaElMasGrande from './routes/recurso2';
+import mainRouter from './routes/index';
 
 /** INICIALIZACION API con EXPRESS */
 const app = express();
@@ -20,5 +19,4 @@ app.use(express.urlencoded({ extended: true }));
  * DEFINICION DE LOS ROUTERS
  */
 
-app.use('/api/recurso1', Pepito);
-app.use('/api/recurso2', bokitaElMasGrande);
+app.use('/api', mainRouter);
