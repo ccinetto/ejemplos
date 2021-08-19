@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wrap:prod": "node_modules/.bin/webpack src/archivo1.js src/archivo2.js src/archivo3.js -o src/bulde.js -w --mode=production",
-    "wrap:dev": "node_modules/.bin/webpack src/archivo1.js src/archivo2.js src/archivo3.js -o src/bundleDev.js -w --mode=development"
+    "wrap:prod": "node_modules/.bin/webpack ./src/archivo1.js ./src/archivo2.js ./src/archivo3.js -o ./dist/bundlePrd.js -w --mode=production",
+    "wrap:dev": "node_modules/.bin/webpack ./src/archivo1.js ./src/archivo2.js ./src/archivo3.js -o ./dist/bundleDev.js -w --mode=development"
   },
   "keywords": [],
   "author": "",
