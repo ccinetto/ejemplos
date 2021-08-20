@@ -5,9 +5,18 @@ module.exports = {
   mode: 'production',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'), //aca se pasa un path absoluto, por eso usamos path
+    path: path.resolve(__dirname, 'dist'), //aca se pasa un path absoluto, por eso usamos path
   },
   resolve: {
     extensions: ['.ts'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
 };
