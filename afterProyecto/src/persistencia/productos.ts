@@ -4,7 +4,7 @@ let productos = [
   {id:3, nombre: "lapiz3", precio:260},
 ]
 
-interface addProduct {
+interface newProduct {
   nombre: string, 
   precio: number
 }
@@ -17,20 +17,20 @@ interface Product {
 
 class Productos {
 
-  find(id: number) {
+  find(id: number) : Product | undefined {
     return  productos.find(aProduct => aProduct.id == Number(id))
   }
   
-  get(id: number | undefined = undefined){
+  get(id?: number){
     if(id){
       return productos.filter(aProduct => aProduct.id == id)
     }
     return productos;
   }
 
-  add(data: addProduct){
+  add(data: newProduct){
 
-    const newItem = {
+    const newItem : Product = {
       id: productos.length +1,
       nombre : data.nombre,
       precio : data.precio,
@@ -46,7 +46,7 @@ class Productos {
   // }
 
   delete(id: number){
-    productos = productos.filter(aProduct => aProduct.id !== Number(id))
+    productos = productos.filter(aProduct => aProduct.id !== id)
     return productos;
   }
 }
