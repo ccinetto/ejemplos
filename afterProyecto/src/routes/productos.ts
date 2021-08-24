@@ -1,33 +1,36 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import { productsController } from '../controllers/productos';
 import { checkAdmin } from '../middleware/admin';
 
 const router = Router();
 
-router.get('/', productsController.getProducts)
+router.get('/', productsController.getProducts);
 
-router.get('/:id', 
+router.get(
+  '/:id',
   productsController.checkProductExists,
   productsController.getProducts
-)
+);
 
-router.post('/', 
+router.post(
+  '/',
   checkAdmin,
   productsController.checkAddProducts,
   productsController.addProducts
-)
+);
 
-router.put('/:id', 
-checkAdmin, 
-productsController.checkProductExists,
-productsController.updateProducts
-)
+router.put(
+  '/:id',
+  checkAdmin,
+  productsController.checkProductExists,
+  productsController.updateProducts
+);
 
-router.delete('/:id',
-checkAdmin, 
-productsController.checkProductExists,
-productsController.deleteProducts
-)
-
+router.delete(
+  '/:id',
+  checkAdmin,
+  productsController.checkProductExists,
+  productsController.deleteProducts
+);
 
 export default router;
