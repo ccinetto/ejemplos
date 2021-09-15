@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "express-async-handler": "^1.1.4"
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^6.0.6"
   }
 }

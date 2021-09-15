@@ -1,5 +1,7 @@
 import { ProductosMemDAO } from './DAOs/memory';
 import { ProductosFSDAO } from './DAOs/fs';
+import { ProductosAtlasDAO } from './DAOs/mongo';
+
 import path from 'path';
 export enum TipoPersistencia {
   Memoria = 'MEM',
@@ -14,13 +16,13 @@ export enum TipoPersistencia {
 export class NoticiasFactoryDAO {
   static get(tipo: TipoPersistencia) {
     switch (tipo) {
-      case 'FS':
+      case TipoPersistencia.FileSystem:
         const filePath = path.resolve(__dirname, './DAOs/products.json');
         return new ProductosFSDAO(filePath);
-      //   case 'MYSQL':
-      //     return new NoticiasFileDAO(process.cwd() + '/noticias.json');
-      //   case 'MYSQL':
-      //     return new NoticiasDBMongo('mibase', 'noticias');
+
+      case TipoPersistencia.MongoAtlas:
+        return new ProductosAtlasDAO();
+
       default:
         return new ProductosMemDAO();
     }

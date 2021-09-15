@@ -1,6 +1,11 @@
-import { newProductI, ProductI } from '../products.interface';
+import {
+  newProductI,
+  ProductI,
+  ProductBaseClass,
+  ProductQuery,
+} from '../products.interface';
 
-export class ProductosMemDAO {
+export class ProductosMemDAO implements ProductBaseClass {
   private productos: ProductI[] = [];
 
   constructor() {
@@ -21,14 +26,14 @@ export class ProductosMemDAO {
     return this.productos.find((aProduct) => aProduct._id === id);
   }
 
-  get(id?: string): ProductI[] {
+  async get(id?: string): Promise<ProductI[]> {
     if (id) {
       return this.productos.filter((aProduct) => aProduct._id === id);
     }
     return this.productos;
   }
 
-  add(data: newProductI) {
+  async add(data: newProductI): Promise<ProductI> {
     if (!data.nombre || !data.precio) throw new Error('invalid data');
 
     const newItem: ProductI = {
@@ -42,7 +47,7 @@ export class ProductosMemDAO {
     return newItem;
   }
 
-  update(id: string, newProductData: newProductI) {
+  async update(id: string, newProductData: newProductI): Promise<ProductI> {
     const index = this.findIndex(id);
     const oldProduct = this.productos[index];
 
@@ -51,8 +56,21 @@ export class ProductosMemDAO {
     return updatedProduct;
   }
 
-  delete(id: string) {
+  async delete(id: string): Promise<void> {
     const index = this.findIndex(id);
     this.productos.splice(index, 1);
+  }
+
+  async query(options: ProductQuery): Promise<ProductI[]> {
+    type Conditions = (aProduct: ProductI) => boolean;
+    const query: Conditions[] = [];
+
+    if (options.nombre)
+      query.push((aProduct: ProductI) => aProduct.nombre == options.nombre);
+
+    if (options.precio)
+      query.push((aProduct: ProductI) => aProduct.precio == options.precio);
+
+    return this.productos.filter((aProduct) => query.every((x) => x(aProduct)));
   }
 }

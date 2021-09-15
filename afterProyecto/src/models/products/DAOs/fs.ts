@@ -1,7 +1,12 @@
 import fs from 'fs';
-import { newProductI, ProductI } from '../products.interface';
+import {
+  newProductI,
+  ProductI,
+  ProductBaseClass,
+  ProductQuery,
+} from '../products.interface';
 
-export class ProductosFSDAO {
+export class ProductosFSDAO implements ProductBaseClass {
   private productos: ProductI[] = [];
   private nombreArchivo: string;
 
@@ -85,5 +90,19 @@ export class ProductosFSDAO {
     const index = await this.findIndex(id);
     this.productos.splice(index, 1);
     await this.guardar();
+  }
+
+  async query(options: ProductQuery): Promise<ProductI[]> {
+    await this.leer(this.nombreArchivo);
+    type Conditions = (aProduct: ProductI) => boolean;
+    const query: Conditions[] = [];
+
+    if (options.nombre)
+      query.push((aProduct: ProductI) => aProduct.nombre == options.nombre);
+
+    if (options.precio)
+      query.push((aProduct: ProductI) => aProduct.precio == options.precio);
+
+    return this.productos.filter((aProduct) => query.every((x) => x(aProduct)));
   }
 }

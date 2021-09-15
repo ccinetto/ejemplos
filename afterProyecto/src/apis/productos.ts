@@ -1,8 +1,9 @@
 import { newProductI, ProductI } from '../models/products/products.interface';
 import { NoticiasFactoryDAO } from '../models/products/products.factory';
 import { TipoPersistencia } from '../models/products/products.factory';
+import { ProductQuery } from '../models/products/products.interface';
 
-const tipo = TipoPersistencia.FileSystem;
+const tipo = TipoPersistencia.MongoAtlas;
 
 class prodAPI {
   private productos;
@@ -29,6 +30,10 @@ class prodAPI {
 
   async deleteProduct(id: string) {
     await this.productos.delete(id);
+  }
+
+  async query(options: ProductQuery) {
+    return await this.productos.query(options);
   }
 }
 

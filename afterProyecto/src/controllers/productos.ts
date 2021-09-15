@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { productsAPI } from '../apis/productos';
+import { ProductQuery } from '../models/products/products.interface';
 
 class Producto {
   checkAddProducts(req: Request, res: Response, next: NextFunction) {
@@ -27,14 +28,28 @@ class Producto {
   }
 
   async getProducts(req: Request, res: Response) {
-    const id = req.params.id;
+    const { id } = req.params;
+    const { nombre, precio } = req.query;
+    if (id) {
+      return res.json({
+        data: await productsAPI.getProducts(id),
+      });
+    }
 
-    const producto = id
-      ? await productsAPI.getProducts(id)
-      : await productsAPI.getProducts();
+    const query: ProductQuery = {};
+
+    if (nombre) query.nombre = nombre.toString();
+
+    if (precio) query.precio = Number(precio);
+
+    if (Object.keys(query).length) {
+      return res.json({
+        data: await productsAPI.query(query),
+      });
+    }
 
     res.json({
-      data: producto,
+      data: await productsAPI.getProducts(),
     });
   }
 
