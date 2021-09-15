@@ -12,74 +12,78 @@ export class ProductosFSDAO {
       { _id: '3', nombre: 'boligoma', precio: 260 },
     ];
     this.nombreArchivo = fileName;
-    this.guardar(this.nombreArchivo, mockData);
+    this.productos = mockData;
+    this.guardar();
   }
 
-  async leer(archivo: string): Promise<ProductI[]> {
-    return JSON.parse(await fs.promises.readFile(archivo, 'utf-8'));
+  async leer(archivo: string): Promise<void> {
+    this.productos = JSON.parse(await fs.promises.readFile(archivo, 'utf-8'));
   }
 
-  async guardar(archivo: string, productos: ProductI[]): Promise<void> {
-    await fs.promises.writeFile(archivo, JSON.stringify(productos, null, '\t'));
+  async guardar(): Promise<void> {
+    await fs.promises.writeFile(
+      this.nombreArchivo,
+      JSON.stringify(this.productos, null, '\t')
+    );
   }
 
   async findIndex(id: string): Promise<number> {
-    const productos = await this.leer(this.nombreArchivo);
-    return productos.findIndex((aProduct: ProductI) => aProduct._id == id);
+    await this.leer(this.nombreArchivo);
+    return this.productos.findIndex((aProduct: ProductI) => aProduct._id == id);
   }
 
   async find(id: string): Promise<ProductI | undefined> {
-    const productos = await this.leer(this.nombreArchivo);
+    await this.leer(this.nombreArchivo);
 
-    return productos.find((aProduct) => aProduct._id === id);
+    return this.productos.find((aProduct) => aProduct._id === id);
   }
 
   async get(id?: string): Promise<ProductI[]> {
-    const productos = await this.leer(this.nombreArchivo);
+    await this.leer(this.nombreArchivo);
 
     if (id) {
-      return productos.filter((aProduct) => aProduct._id === id);
+      return this.productos.filter((aProduct) => aProduct._id === id);
     }
-    return productos;
+    return this.productos;
   }
 
   async add(data: newProductI): Promise<ProductI> {
     if (!data.nombre || !data.precio) throw new Error('invalid data');
 
-    const productos = await this.leer(this.nombreArchivo);
+    await this.leer(this.nombreArchivo);
 
     const newItem: ProductI = {
-      _id: (productos.length + 1).toString(),
+      _id: (this.productos.length + 1).toString(),
       nombre: data.nombre,
       precio: data.precio,
     };
 
-    productos.push(newItem);
+    this.productos.push(newItem);
 
-    await this.guardar(this.nombreArchivo, productos);
+    await this.guardar();
 
     return newItem;
   }
 
   async update(id: string, newProductData: newProductI): Promise<ProductI> {
-    const productos = await this.leer(this.nombreArchivo);
+    await this.leer(this.nombreArchivo);
 
     const index = await this.findIndex(id);
-    const oldProduct = productos[index];
+    const oldProduct = this.productos[index];
 
     const updatedProduct: ProductI = { ...oldProduct, ...newProductData };
-    productos.splice(index, 1, updatedProduct);
+    this.productos.splice(index, 1, updatedProduct);
 
-    await this.guardar(this.nombreArchivo, productos);
+    await this.guardar();
 
     return updatedProduct;
   }
 
   async delete(id: string): Promise<void> {
-    const productos = await this.leer(this.nombreArchivo);
+    await this.leer(this.nombreArchivo);
 
     const index = await this.findIndex(id);
-    productos.splice(index, 1);
-    await this.guardar(this.nombreArchivo, productos);
+    this.productos.splice(index, 1);
+    await this.guardar();
   }
 }
