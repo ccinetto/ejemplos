@@ -13,12 +13,13 @@ const productsSchema = new mongoose.Schema<ProductI>({
 });
 
 export class ProductosAtlasDAO implements ProductBaseClass {
-  private srv = Config.MONGO_ATLAS_URI;
+  private srv: string;
   private productos;
 
   constructor() {
     console.log('CONECTANDO MONGO');
-    mongoose.connect(this.srv);
+    (this.srv = `mongodb+srv://${Config.MONGO_ATLAS_USER}:${Config.MONGO_ATLAS_PASSWORD}@${Config.MONGO_ATLAS_CLUSTER}/${Config.MONGO_ATLAS_DBNAME}?retryWrites=true&w=majority`),
+      mongoose.connect(this.srv);
     this.productos = mongoose.model<ProductI>('producto', productsSchema);
   }
 
