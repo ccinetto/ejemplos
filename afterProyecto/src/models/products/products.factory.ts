@@ -17,13 +17,21 @@ export class NoticiasFactoryDAO {
   static get(tipo: TipoPersistencia) {
     switch (tipo) {
       case TipoPersistencia.FileSystem:
+        console.log('RETORNANDO INSTANCIA CLASE FS');
         const filePath = path.resolve(__dirname, './DAOs/products.json');
+        console.log(filePath);
         return new ProductosFSDAO(filePath);
 
       case TipoPersistencia.MongoAtlas:
+        console.log('RETORNANDO INSTANCIA CLASE MONGO ATLAS');
         return new ProductosAtlasDAO();
 
+      case TipoPersistencia.LocalMongo:
+        console.log('RETORNANDO INSTANCIA CLASE MONGO LOCAL');
+        return new ProductosAtlasDAO(true);
+
       default:
+        console.log('RETORNANDO INSTANCIA CLASE MEMORIA');
         return new ProductosMemDAO();
     }
   }

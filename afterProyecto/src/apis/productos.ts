@@ -3,7 +3,10 @@ import { NoticiasFactoryDAO } from '../models/products/products.factory';
 import { TipoPersistencia } from '../models/products/products.factory';
 import { ProductQuery } from '../models/products/products.interface';
 
-const tipo = TipoPersistencia.MongoAtlas;
+/**
+ * Con esta variable elegimos el tipo de persistencia
+ */
+const tipo = TipoPersistencia.LocalMongo;
 
 class prodAPI {
   private productos;
