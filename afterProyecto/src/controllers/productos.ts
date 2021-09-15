@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { productsPersistencia } from '../persistencia/productos';
+import { productsAPI } from '../apis/productos';
 
 class Producto {
   checkAddProducts(req: Request, res: Response, next: NextFunction) {
@@ -14,9 +14,9 @@ class Producto {
     next();
   }
 
-  checkProductExists(req: Request, res: Response, next: NextFunction) {
-    const id = Number(req.params.id);
-    const producto = productsPersistencia.find(id);
+  async checkProductExists(req: Request, res: Response, next: NextFunction) {
+    const id = req.params.id;
+    const producto = await productsAPI.getProducts(id);
 
     if (!producto) {
       return res.status(404).json({
@@ -26,20 +26,20 @@ class Producto {
     next();
   }
 
-  getProducts(req: Request, res: Response) {
-    const id = Number(req.params.id);
+  async getProducts(req: Request, res: Response) {
+    const id = req.params.id;
 
     const producto = id
-      ? productsPersistencia.get(id)
-      : productsPersistencia.get();
+      ? await productsAPI.getProducts(id)
+      : await productsAPI.getProducts();
 
     res.json({
       data: producto,
     });
   }
 
-  addProducts(req: Request, res: Response) {
-    const newItem = productsPersistencia.add(req.body);
+  async addProducts(req: Request, res: Response) {
+    const newItem = await productsAPI.addProduct(req.body);
 
     res.json({
       msg: 'producto agregado con exito',
@@ -47,16 +47,20 @@ class Producto {
     });
   }
 
-  updateProducts(req: Request, res: Response) {
+  async updateProducts(req: Request, res: Response) {
+    const id = req.params.id;
+
+    const updatedItem = await productsAPI.updateProduct(id, req.body);
+
     res.json({
       msg: 'actualizando producto',
+      data: updatedItem,
     });
   }
 
-  deleteProducts(req: Request, res: Response) {
-    const id = Number(req.params.id);
-
-    productsPersistencia.delete(id);
+  async deleteProducts(req: Request, res: Response) {
+    const id = req.params.id;
+    await productsAPI.deleteProduct(id);
     res.json({
       msg: 'producto borrado',
     });
