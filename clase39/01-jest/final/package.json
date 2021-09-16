@@ -1,0 +1,22 @@
+{
+  "name": "01-jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "correr:test1": "npm test -- src/__test__/tareas-test1.test.js",
+    "correr:test2": "npm test -- src/__test__/tareas-test2.test.js",
+    "correr:test3": "npm test -- src/__test__/tareas-test3.test.js",
+    "start": "node src/index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1"
+  }
+}
