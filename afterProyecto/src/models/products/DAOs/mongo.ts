@@ -27,14 +27,18 @@ export class ProductosAtlasDAO implements ProductBaseClass {
 
   async get(id?: string): Promise<ProductI[]> {
     let output: ProductI[] = [];
-    if (id) {
-      const document = await this.productos.findById(id);
-      if (document) output.push(document);
-    } else {
-      output = await this.productos.find();
-    }
+    try {
+      if (id) {
+        const document = await this.productos.findById(id);
+        if (document) output.push(document);
+      } else {
+        output = await this.productos.find();
+      }
 
-    return output;
+      return output;
+    } catch (err) {
+      return output;
+    }
   }
 
   async add(data: newProductI): Promise<ProductI> {

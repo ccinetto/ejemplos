@@ -31,8 +31,14 @@ class Producto {
     const { id } = req.params;
     const { nombre, precio } = req.query;
     if (id) {
+      const result = await productsAPI.getProducts(id);
+      if (!result.length)
+        return res.status(404).json({
+          data: 'objeto no encontrado',
+        });
+
       return res.json({
-        data: await productsAPI.getProducts(id),
+        data: result,
       });
     }
 
