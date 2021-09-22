@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Desafío Clase 23</title>
+    <style></style>
+</head>
+<body>
+    <main class='container'>
+        <h1>Desafío Clase 23 - Normalizr</h1>
+        <h2 class='mt-4'>Centro de Mensajes</h2>
+        <form id='formMensajes'>
+            <div class='form-group'>
+                <label for='email'>Email</label>
+                <input class='form-control' type='email' name='email' id='email' required>
+            </div>
+            <div class='form-group'>
+                <label for='nombre'>Nombre</label>
+                <input class='form-control' type='text' name='nombre' id='nombre' required>
+            </div>
+            <div class='form-group'>
+                <label for='apellido'>Apellido</label>
+                <input class='form-control' type='text' name='apellido' id='apellido' required>
+            </div>
+            <div class='form-group'>
+                <label for='alias'>Alias</label>
+                <input class='form-control' type='text' name='alias' id='alias' required>
+            </div>
+            <div class='form-group'>
+                <label for='edad'>Edad</label>
+                <input class='form-control' type='number' name='edad' id='edad' required>
+            </div>
+            <div class='form-group'>
+                <label for='avatar'>Avatar</label>
+                <input class='form-control' type='text' name='avatar' id='avatar' required>
+            </div>
+            <div class='form-group'>
+                <label for='mensaje'>Mensaje</label>
+                <input class='form-control' type='mensaje' name='mensaje' id='mensaje' required>
+            </div>
+            <div class='mt-2'>
+                <input type='submit' class='btn btn-warning'> 
+            </div>
+        </form>
+        <div class='mt-4' id='mensajesContainer'>
+
+        </div>
+    </main>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+<script src="./main.js"></script>
+</html>
