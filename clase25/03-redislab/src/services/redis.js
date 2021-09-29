@@ -6,13 +6,15 @@ import config from '../config';
 import redis from 'redis';
 import connectRedis from 'connect-redis';
 import session from 'express-session';
-export const RedisStore = connectRedis(session);
+const RedisStore = connectRedis(session);
 
-export const redisClient = redis.createClient({
+const redisClient = redis.createClient({
   host: config.REDIS_URL,
   port: config.REDIS_PORT,
   password: config.REDIS_PSW,
 });
+
+export default new RedisStore({ client: redisClient });
 /* ----------------------------------------------------- */
 
 redisClient.on('error', function (err) {

@@ -8,7 +8,7 @@ const StoreOptions = {
   /* ----------------------------------------------------- */
   /*           Persistencia por redis database             */
   /* ----------------------------------------------------- */
-  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/sesiones' }),
+  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/coderhouse' }),
   /* ----------------------------------------------------- */
 
   secret: 'shhhhhhhhhhhhhhhhhhhhh',

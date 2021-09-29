@@ -6,19 +6,16 @@ import mainRouter from '../routes';
 
 const FileStore = sessionFileStore(session);
 
-const fileStoreOptions = {
-  /* ----------------------------------------------------- */
-  /*           Persistencia por file store                 */
-  /* ----------------------------------------------------- */
-  store: new FileStore({ path: './sesiones', ttl: 300, retries: 0 }),
-  /* ----------------------------------------------------- */
+const ttlSeconds = 5;
 
+const fileStoreOptions = {
+  store: new FileStore({ path: './sesiones', ttl: ttlSeconds, retries: 0 }),
   secret: 'shhhhhhhhhhhhhhhhhhhhh',
   resave: false,
-  saveUninitialized: false /* ,
-    cookie: {
-        maxAge: 40000
-    } */,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: ttlSeconds * 1000,
+  },
 };
 
 const app = express();

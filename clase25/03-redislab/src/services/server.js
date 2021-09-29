@@ -2,13 +2,13 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mainRouter from '../routes';
-import { redisClient, RedisStore } from './redis';
+import redisClient from './redis';
 
 const StoreOptions = {
   /* ----------------------------------------------------- */
   /*           Persistencia por redis database             */
   /* ----------------------------------------------------- */
-  store: new RedisStore({ client: redisClient }),
+  store: redisClient,
   /* ----------------------------------------------------- */
 
   secret: 'shhhhhhhhhhhhhhhhhhhhh',
