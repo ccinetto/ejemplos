@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import { isLoggedIn } from '../middlewares/auth';
 import UserRouter from './user';
-import passport from 'passport';
+import passport from '../middlewares/auth';
 
 const router = Router();
 
 router.post('/login', passport.authenticate('login'), function (req, res) {
-  res.json(req.user);
+  res.json({ msg: 'Welcome!', user: req.user });
 });
 
 router.post('/signup', (req, res, next) => {

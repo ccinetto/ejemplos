@@ -67,7 +67,7 @@ passport.use('login', new LocalStrategy(strategyOptions, loginFunc));
 passport.use('signup', new LocalStrategy(strategyOptions, signUpFunc));
 
 passport.serializeUser((user, done) => {
-  console.log(user);
+  // console.log(user);
   done(null, user._id);
 });
 
@@ -82,3 +82,5 @@ export const isLoggedIn = (req, res, done) => {
 
   done();
 };
+
+export default passport;

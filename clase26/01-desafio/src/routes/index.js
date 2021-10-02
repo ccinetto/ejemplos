@@ -11,6 +11,7 @@ let usuarios = [
 ];
 
 router.get('/', (req, res) => {
+  console.log(`SESSION =>${JSON.stringify(req.session)}`);
   if (req.session.nombre) {
     res.redirect('/datos');
   } else {
