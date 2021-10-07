@@ -1,11 +1,12 @@
 import passport from 'passport';
-import passportTwitter from 'passport-twitter';
 import { UserModel } from '../models/user';
 import Config from '../config';
-import { IStrategyOptionBase, Profile } from 'passport-twitter';
+import {
+  IStrategyOptionBase,
+  Profile,
+  Strategy as TwitterStrategy,
+} from 'passport-twitter';
 import { Request, Response, NextFunction } from 'express';
-
-const TwitterStrategy = passportTwitter.Strategy;
 
 const strategyOptions: IStrategyOptionBase = {
   consumerKey: Config.TWITTER_APP_ID,
@@ -37,8 +38,11 @@ passport.deserializeUser(function (obj: string, cb) {
 });
 
 export const isLoggedIn = (req: Request, res: Response, done: NextFunction) => {
-  if (!req.isAuthenticated())
-    return res.status(401).json({ msg: 'Unathorized' });
+  // if (!req.isAuthenticated())
+  if (!req.isAuthenticated()) {
+    console.log('no autorizado!');
+    return res.redirect('/api/login');
+  }
 
   done();
 };

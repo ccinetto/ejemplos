@@ -10,13 +10,18 @@ interface RequestUser extends Request {
 
 type TokenPayload = {
   userId: string;
+  firstName: String;
+  lastName: String;
 };
 
 export const generateAuthToken = async (user: User): Promise<string> => {
   //get the private key from the config file -> environment variable
   const payload: TokenPayload = {
     userId: user._id,
+    firstName: user.firstName,
+    lastName: user.lastName,
   };
+
   const token = await jwt.sign(payload, Config.TOKEN_SECRET_KEY, {
     expiresIn: '1h',
   });

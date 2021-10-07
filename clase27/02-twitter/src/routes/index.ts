@@ -45,7 +45,7 @@ interface User extends Express.User {
   emails?: Emails[];
 }
 
-router.get('/datos', (req, res) => {
+router.get('/datos', isLoggedIn, (req, res) => {
   let foto = 'noPhoto';
   let email = 'noEmail';
 
@@ -65,8 +65,6 @@ router.get('/datos', (req, res) => {
       foto,
       email,
     });
-  } else {
-    res.redirect('/api/login');
   }
 });
 

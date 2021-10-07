@@ -1,10 +1,12 @@
 import passport from 'passport';
-import passportFacebook from 'passport-facebook';
 import { UserModel } from '../models/user';
 import Config from '../config';
-import { VerifyFunction, StrategyOption } from 'passport-facebook';
+import {
+  VerifyFunction,
+  StrategyOption,
+  Strategy as FaceBookStrategy,
+} from 'passport-facebook';
 import { Request, Response, NextFunction } from 'express';
-const FaceBookStrategy = passportFacebook.Strategy;
 
 const strategyOptions: StrategyOption = {
   clientID: Config.FACEBOOK_APP_ID,

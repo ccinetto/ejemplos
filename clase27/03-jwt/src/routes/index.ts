@@ -16,6 +16,7 @@ router.post('/login', async (req, res) => {
 
   res.header('x-auth-token', token).json({
     msg: 'login OK',
+    token,
   });
 });
 
