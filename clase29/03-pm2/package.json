@@ -1,12 +1,12 @@
 {
-  "name": "baseTypescript",
+  "name": "pm2example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/tsc",
     "start": "node dist/index.js",
-    "start:prod": "node_modules/.bin/pm2 start dist/index.js --watch",
+    "prod": "npm run build && node_modules/.bin/pm2 start dist/index.js --watch",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

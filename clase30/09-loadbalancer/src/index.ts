@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const argumentos = minimist(process.argv.slice(2));
-const PORT = argumentos.puerto || 8080;
+export const PORT = argumentos.puerto || 8080;
 
 console.log(argumentos);
 Server.listen(PORT, () =>

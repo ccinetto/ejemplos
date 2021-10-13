@@ -7,11 +7,7 @@ module.exports = {
       script: 'dist/index.js',
       watch: true,
       autorestart: true,
-      instances: 4,
-    },
-    {
-      script: './service-worker/',
-      watch: ['./service-worker'],
+      instances: 5,
     },
   ],
 };

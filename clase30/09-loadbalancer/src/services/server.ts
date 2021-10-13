@@ -1,11 +1,12 @@
 import express from 'express';
+import { PORT } from '..';
 const app = express();
 
 app.get('/', (req, res) => {
   console.log('Resolving / endpoint');
   res.json({
     pid: process.pid,
-    msg: 'HOLA MARTIN!!',
+    msg: `HOLA desde puerto ${PORT}`,
   });
 });
 
