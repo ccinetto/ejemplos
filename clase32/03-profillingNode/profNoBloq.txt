@@ -1,0 +1,260 @@
+Statistical profiling result from profNoBloq.log, (1605 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    645   40.2%          /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+     12    0.7%          /usr/lib/x86_64-linux-gnu/libc-2.31.so
+      3    0.2%          /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      3    0.2%    0.3%  LazyCompile: *fastparse /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/parseurl/index.js:95:20
+      1    0.1%    0.1%  RegExp: ^\/auth-nobloq\/?$
+      1    0.1%    0.1%  LazyCompile: *processTicksAndRejections internal/process/task_queues.js:67:35
+      1    0.1%    0.1%  LazyCompile: *normalizeString path.js:59:25
+      1    0.1%    0.1%  LazyCompile: *next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:176:16
+
+ [C++]:
+   ticks  total  nonlib   name
+    883   55.0%   93.4%  epoll_pwait
+     13    0.8%    1.4%  __write
+     12    0.7%    1.3%  __lll_lock_wait
+     11    0.7%    1.2%  __sched_yield
+      3    0.2%    0.3%  __libc_read
+      3    0.2%    0.3%  __libc_malloc
+      2    0.1%    0.2%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      2    0.1%    0.2%  fwrite
+      2    0.1%    0.2%  __pthread_cond_timedwait
+      2    0.1%    0.2%  __GI___pthread_mutex_unlock
+      1    0.1%    0.1%  sigemptyset
+      1    0.1%    0.1%  accept4
+      1    0.1%    0.1%  __pthread_cond_signal
+      1    0.1%    0.1%  __mprotect
+
+ [Summary]:
+   ticks  total  nonlib   name
+      7    0.4%    0.7%  JavaScript
+    937   58.4%   99.2%  C++
+     45    2.8%    4.8%  GC
+    660   41.1%          Shared libraries
+      1    0.1%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+      3   60.0%    0.2%  __libc_malloc
+      1   20.0%    0.1%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      1   20.0%    0.1%  __write
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    883   55.0%  epoll_pwait
+
+    645   40.2%  /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+    344   53.3%    /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+     59   17.2%      LazyCompile: ~pbkdf2Sync internal/crypto/pbkdf2.js:44:20
+     59  100.0%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:13:21
+     59  100.0%          LazyCompile: ~handle /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:86:49
+     59  100.0%            LazyCompile: ~next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/route.js:114:16
+     47   13.7%      LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+     43   91.5%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:306:29
+      3    7.0%          Eval: ~<anonymous> internal/source_map/source_map_cache.js:1:1
+      3  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      3    7.0%          Eval: ~<anonymous> events.js:1:1
+      3  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      2    4.7%          LazyCompile: ~setupPrepareStackTrace internal/bootstrap/node.js:254:32
+      2  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      2    4.7%          LazyCompile: ~setupBuffer internal/bootstrap/node.js:302:21
+      2  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      2    4.7%          Eval: ~<anonymous> http.js:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      2    4.7%          Eval: ~<anonymous> fs.js:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      2    4.7%          Eval: ~<anonymous> buffer.js:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          LazyCompile: ~setupProcessObject internal/bootstrap/node.js:273:28
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%          LazyCompile: ~lazyLoadStreams fs.js:2064:25
+      1  100.0%            LazyCompile: ~get ReadStream fs.js:2172:17
+      1    2.3%          LazyCompile: ~initializeSourceMapsHandlers internal/bootstrap/pre_execution.js:452:38
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:21:36
+      1    2.3%          LazyCompile: ~initializeCJSLoader internal/bootstrap/pre_execution.js:427:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:21:36
+      1    2.3%          LazyCompile: ~createGlobalConsole internal/bootstrap/node.js:319:29
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%          Eval: ~<anonymous> tty.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> timers.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> net.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/streams/readable.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/process/task_queues.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/package_json_reader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/esm/translators.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/esm/module_map.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/esm/loader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/esm/get_source.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/modules/cjs/loader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/crypto/pbkdf2.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/crypto/keygen.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/crypto/cipher.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/console/global.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/cluster/master.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.3%          Eval: ~<anonymous> internal/blob.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> cluster.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> child_process.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> _http_outgoing.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    2.3%          Eval: ~<anonymous> _http_common.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      4    8.5%        LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:220:25
+      4  100.0%          LazyCompile: ~loadNativeModule internal/modules/cjs/helpers.js:35:26
+      4  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:725:24
+     22    6.4%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:118:23
+     22  100.0%        LazyCompile: ~Socket._writeGeneric net.js:772:42
+     22  100.0%          LazyCompile: ~Socket._writev net.js:804:36
+     22  100.0%            LazyCompile: ~doWrite internal/streams/writable.js:367:17
+     19    5.5%      LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:986:18
+     19  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1039:37
+     19  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1094:37
+     19  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:938:33
+     17    4.9%      /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+      3   17.6%        LazyCompile: ~checkInvalidHeaderChar _http_common.js:231:32
+      3  100.0%          LazyCompile: ~<anonymous> _http_outgoing.js:549:45
+      3  100.0%            LazyCompile: ~setHeader _http_outgoing.js:559:57
+      2   11.8%        LazyCompile: ~header /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:754:29
+      2  100.0%          LazyCompile: ~contentType /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:594:32
+      2  100.0%            LazyCompile: ~sendStatus /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:353:37
+      2   11.8%        LazyCompile: ~getOwn internal/bootstrap/loaders.js:154:16
+      2  100.0%          LazyCompile: ~syncExports internal/bootstrap/loaders.js:261:14
+      2  100.0%            LazyCompile: ~<anonymous> internal/bootstrap/loaders.js:247:15
+      1    5.9%        LazyCompile: ~toIdentifier /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/toidentifier/index.js:22:23
+      1  100.0%          LazyCompile: ~forEachCode /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/http-errors/index.js:243:38
+      1  100.0%            /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+      1    5.9%        LazyCompile: ~stat internal/modules/cjs/loader.js:146:14
+      1  100.0%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:462:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:816:35
+      1    5.9%        LazyCompile: ~parseQueryStringValues /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:41:50
+      1  100.0%          LazyCompile: ~module.exports /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:222:27
+      1  100.0%            LazyCompile: ~parseExtendedQueryString /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/utils.js:291:34
+      1    5.9%        LazyCompile: ~parseQueryStringKeys /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:135:46
+      1  100.0%          LazyCompile: ~module.exports /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:222:27
+      1  100.0%            LazyCompile: ~parseExtendedQueryString /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/utils.js:291:34
+      1    5.9%        LazyCompile: ~parseObject /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:100:28
+      1  100.0%          LazyCompile: ~parseQueryStringKeys /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:135:46
+      1  100.0%            LazyCompile: ~module.exports /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/qs/lib/parse.js:222:27
+      1    5.9%        LazyCompile: ~match /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:110:39
+      1  100.0%          LazyCompile: ~matchLayer /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:572:20
+      1  100.0%            LazyCompile: ~next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:176:16
+      1    5.9%        LazyCompile: ~getCurrentNodeMethods /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/methods/index.js:29:31
+      1  100.0%          Eval: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/methods/index.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1039:37
+      1    5.9%        LazyCompile: ~format /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/content-type/index.js:65:17
+      1  100.0%          LazyCompile: ~setCharset /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/utils.js:250:41
+      1  100.0%            LazyCompile: ~send /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:107:25
+      1    5.9%        LazyCompile: ~expressInit /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/middleware/init.js:29:30
+      1  100.0%          LazyCompile: ~handle /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%            LazyCompile: ~trim_prefix /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:288:23
+      1    5.9%        LazyCompile: ~FastBuffer internal/buffer.js:957:14
+      1  100.0%          LazyCompile: ~alloc buffer.js:373:30
+      1  100.0%            LazyCompile: ~pbkdf2 internal/crypto/pbkdf2.js:18:16
+     10    2.9%      LazyCompile: ~sendStatus /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:353:37
+     10  100.0%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:58:67
+     10  100.0%          LazyCompile: ~wrap.ondone internal/crypto/pbkdf2.js:34:17
+      8    2.3%      LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:58:67
+      8  100.0%        LazyCompile: ~wrap.ondone internal/crypto/pbkdf2.js:34:17
+      7    2.0%      LazyCompile: ~writeHead _http_server.js:254:19
+      7  100.0%        LazyCompile: ~_implicitHeader _http_server.js:249:68
+      7  100.0%          LazyCompile: ~write_ _http_outgoing.js:704:16
+      7  100.0%            LazyCompile: ~end _http_outgoing.js:795:45
+      7    2.0%      LazyCompile: ~toString buffer.js:798:46
+      7  100.0%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:58:67
+      7  100.0%          LazyCompile: ~wrap.ondone internal/crypto/pbkdf2.js:34:17
+      6    1.7%      LazyCompile: ~pbkdf2 internal/crypto/pbkdf2.js:18:16
+      6  100.0%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:48:25
+      6  100.0%          LazyCompile: ~handle /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:86:49
+      6  100.0%            LazyCompile: ~next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/route.js:114:16
+      5    1.5%      LazyCompile: ~internalBinding internal/bootstrap/loaders.js:138:45
+      1   20.0%        LazyCompile: ~startListeningIfSignal internal/process/signal.js:21:32
+      1  100.0%          LazyCompile: ~emit events.js:349:44
+      1  100.0%            LazyCompile: ~_addListener events.js:428:22
+      1   20.0%        Eval: ~<anonymous> zlib.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1  100.0%            LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:220:25
+      1   20.0%        Eval: ~<anonymous> internal/worker/js_transferable.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:306:29
+      1   20.0%        Eval: ~<anonymous> internal/util.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:306:29
+      1   20.0%        Eval: ~<anonymous> crypto.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1  100.0%            LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:220:25
+      5    1.5%      LazyCompile: ~end _http_outgoing.js:795:45
+      5  100.0%        LazyCompile: ~send /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:107:25
+      5  100.0%          LazyCompile: ~sendStatus /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:353:37
+      5  100.0%            LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:58:67
+      5    1.5%      LazyCompile: ~Hash internal/crypto/hash.js:37:14
+      5  100.0%        LazyCompile: ~createHash crypto.js:115:20
+      5  100.0%          LazyCompile: ~entitytag /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/etag/index.js:39:20
+      5  100.0%            LazyCompile: ~etag /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/etag/index.js:70:15
+      4    1.2%      LazyCompile: ~nextTick internal/process/task_queues.js:103:18
+      2   50.0%        LazyCompile: ~endReadable internal/streams/readable.js:1317:21
+      2  100.0%          LazyCompile: ~Readable.read internal/streams/readable.js:374:35
+      1   50.0%            LazyCompile: ~resume_ internal/streams/readable.js:960:17
+      1   50.0%            LazyCompile: ~flow internal/streams/readable.js:984:14
+      1   25.0%        LazyCompile: ~resume internal/streams/readable.js:953:16
+      1  100.0%          LazyCompile: ~Readable.resume internal/streams/readable.js:939:37
+      1  100.0%            LazyCompile: ~_dump _http_incoming.js:297:49
+      1   25.0%        LazyCompile: ~onwrite internal/streams/writable.js:394:17
+      1  100.0%          LazyCompile: ~afterWriteDispatched internal/stream_base_commons.js:151:30
+      1  100.0%            LazyCompile: ~writevGeneric internal/stream_base_commons.js:118:23
+      4    1.2%      LazyCompile: ~expressInit /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/middleware/init.js:29:30
+      4  100.0%        LazyCompile: ~handle /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:86:49
+      3   75.0%          LazyCompile: *next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:176:16
+      3  100.0%            LazyCompile: ~query /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/middleware/query.js:39:24
+      1   25.0%          LazyCompile: ~trim_prefix /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:288:23
+      1  100.0%            LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/index.js:275:64
+      4    1.2%      LazyCompile: ~_storeHeader _http_outgoing.js:362:22
+      4  100.0%        LazyCompile: ~writeHead _http_server.js:254:19
+      4  100.0%          LazyCompile: ~_implicitHeader _http_server.js:249:68
+      4  100.0%            LazyCompile: ~write_ _http_outgoing.js:704:16
+      4    1.2%      LazyCompile: ~Module._extensions..json internal/modules/cjs/loader.js:1119:39
+      4  100.0%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:938:33
+      4  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:725:24
+      4  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:966:36
+      8    1.2%    LazyCompile: ~send /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:107:25
+      8  100.0%      LazyCompile: ~sendStatus /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/response.js:353:37
+      8  100.0%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:58:67
+      8  100.0%          LazyCompile: ~wrap.ondone internal/crypto/pbkdf2.js:34:17
+      7    1.1%    LazyCompile: ~_storeHeader _http_outgoing.js:362:22
+      7  100.0%      LazyCompile: ~writeHead _http_server.js:254:19
+      7  100.0%        LazyCompile: ~_implicitHeader _http_server.js:249:68
+      7  100.0%          LazyCompile: ~write_ _http_outgoing.js:704:16
+      7  100.0%            LazyCompile: ~end _http_outgoing.js:795:45
+      7    1.1%    LazyCompile: ~ReadableState internal/streams/readable.js:71:23
+      7  100.0%      LazyCompile: ~Readable internal/streams/readable.js:170:18
+      7  100.0%        LazyCompile: ~IncomingMessage _http_incoming.js:42:25
+      7  100.0%          LazyCompile: ~parserOnHeadersComplete _http_common.js:76:33
+

@@ -1,0 +1,64 @@
+Statistical profiling result from profBloq.log, (30539 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+  30466   99.8%          /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+     11    0.0%          /usr/lib/x86_64-linux-gnu/libc-2.31.so
+      1    0.0%          /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      2    0.0%    3.3%  LazyCompile: *nextTick internal/process/task_queues.js:103:18
+      1    0.0%    1.6%  RegExp: ^[\^_`a-zA-Z\-0-9!#$%&'*+.|~]+$
+      1    0.0%    1.6%  RegExp: ^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$
+      1    0.0%    1.6%  RegExp: ; *([!#$%&'*+.^_`|~0-9A-Za-z-]+) *= *("(?:[\u000b\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\u000b\u0020-\u00ff])*"|[!#$%&'*+.^_`|~0-9A-Za-z-]+) *
+      1    0.0%    1.6%  LazyCompile: *normalizeString path.js:59:25
+
+ [C++]:
+   ticks  total  nonlib   name
+     20    0.1%   32.8%  epoll_pwait
+     12    0.0%   19.7%  __write
+      8    0.0%   13.1%  __lll_lock_wait
+      3    0.0%    4.9%  __libc_malloc
+      2    0.0%    3.3%  fwrite
+      1    0.0%    1.6%  std::ostream::sentry::sentry(std::ostream&)
+      1    0.0%    1.6%  std::ostream::operator<<(int)
+      1    0.0%    1.6%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    0.0%    1.6%  shutdown
+      1    0.0%    1.6%  operator new[](unsigned long)
+      1    0.0%    1.6%  operator delete(void*)
+      1    0.0%    1.6%  do_futex_wait.constprop.0
+      1    0.0%    1.6%  cfree
+      1    0.0%    1.6%  __libc_read
+      1    0.0%    1.6%  __GI___pthread_mutex_unlock
+
+ [Summary]:
+   ticks  total  nonlib   name
+      6    0.0%    9.8%  JavaScript
+     55    0.2%   90.2%  C++
+     30    0.1%   49.2%  GC
+  30478   99.8%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+      7   46.7%    0.0%  __write
+      3   20.0%    0.0%  __libc_malloc
+      1    6.7%    0.0%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    6.7%    0.0%  operator new[](unsigned long)
+      1    6.7%    0.0%  operator delete(void*)
+      1    6.7%    0.0%  fwrite
+      1    6.7%    0.0%  cfree
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+  30466   99.8%  /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+  30205   99.1%    /home/ccinetto/.nvm/versions/node/v14.18.1/bin/node
+  29954   99.2%      LazyCompile: ~pbkdf2Sync internal/crypto/pbkdf2.js:44:20
+  29885   99.8%        LazyCompile: ~<anonymous> /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/dist/services/server.js:30:23
+  29885  100.0%          LazyCompile: ~handle /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/layer.js:86:49
+  29885  100.0%            LazyCompile: ~next /home/ccinetto/Cristian/Coderhouse/ejemplos/clase32/03-profillingNode/node_modules/express/lib/router/route.js:114:16
+
