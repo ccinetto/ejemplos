@@ -1,5 +1,6 @@
 import Config from '../config';
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 class Email {
   private owner;
@@ -30,6 +31,12 @@ class Email {
       to: dest,
       subject,
       html: content,
+      attachments: [
+        {
+          // filename and content type is derived from path
+          path: path.resolve(__dirname, '../nodemailer.png'),
+        },
+      ],
     };
 
     const response = await this.transporter.sendMail(mailOptions);
