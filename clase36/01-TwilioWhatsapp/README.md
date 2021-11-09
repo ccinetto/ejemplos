@@ -10,7 +10,7 @@
    - Ejecutar un POST Request al endpoint /send-message y enviar en el body el numero a quien queremos enviar el mensaje y el contenido
      Ej:
      {
-     "destination":"+541168796601",
+     "destination":"+5491168796601",
      "content":"mensaje para el mundo"
      }
    - opcionalmente podemos enviar una imagen en el campo picture con un url a la imagen
