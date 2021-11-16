@@ -18,7 +18,7 @@ export const graphqlSchema = buildSchema(`
         getArrayOfNumbers: [Int],
         getAllCourses: [Course]
         getCourseById(id: Int!): Course
-        getAllCoursesByTopic(topic: String): [Course]
+        getAllCoursesByTopic(topic: String!): [Course]
     },
     type Mutation {
         updateCourseTopic(id: Int!, topic: String!): Course

@@ -8,18 +8,15 @@ mongoose.Promise = global.Promise;
 export class MongoDB {
   private instance: number;
   private uri: string;
-  private connection: Connection;
+  private connection?: Connection;
 
   constructor(local?: boolean) {
     this.uri = local ? Config.MONGO_LOCAL_URL : Config.MONGO_ATLAS_SRV;
-    this.connection = mongoose.createConnection(this.uri);
     this.instance = 0;
   }
 
   getConnection() {
+    if (!this.connection) this.connection = mongoose.createConnection(this.uri);
     return this.connection;
   }
 }
-
-export const MongoAtlas = new MongoDB();
-export const MongoLocal = new MongoDB(true);

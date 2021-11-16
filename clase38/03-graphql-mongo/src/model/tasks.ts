@@ -3,7 +3,7 @@ import { composeWithMongoose } from 'graphql-compose-mongoose';
 import { MongoAtlas } from '../services/mongodb';
 
 interface TaskType {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   duration: number;
