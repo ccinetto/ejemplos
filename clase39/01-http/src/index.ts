@@ -28,5 +28,5 @@ import { ejemploGot3 } from './ejemplos/got/prueba3';
 
 //Ejemplos del cliente GOT
 // ejemploGot1();
-// ejemploGot2();
-ejemploGot3();
+ejemploGot2();
+// ejemploGot3();

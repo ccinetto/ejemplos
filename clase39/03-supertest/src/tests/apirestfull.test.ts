@@ -29,6 +29,7 @@ describe('Ejemplos de tests', () => {
 
   test('Deberia recibir un array vacio si no existen usuarios', async () => {
     const mockData: UsuarioI[] = [];
+
     jest
       .spyOn(User, 'find')
       .mockImplementationOnce(() => Promise.resolve(mockData) as any);

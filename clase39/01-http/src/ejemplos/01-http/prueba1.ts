@@ -1,22 +1,22 @@
 import https from 'https';
 
-var options = {
+const options = {
   method: 'GET',
   hostname: 'jsonplaceholder.typicode.com',
-  path: '/posts',
+  path: '/posts/2',
   headers: {},
   maxRedirects: 20,
 };
 
-var req = https.request(options, function (res) {
-  var chunks: any[] = [];
+const req = https.request(options, function (res) {
+  const chunks: any[] = [];
 
   res.on('data', function (chunk) {
     chunks.push(chunk);
   });
 
   res.on('end', function (chunk: any) {
-    var body = Buffer.concat(chunks);
+    const body = Buffer.concat(chunks);
     console.log(body.toString());
   });
 
