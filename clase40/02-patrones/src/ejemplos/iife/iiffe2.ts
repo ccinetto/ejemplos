@@ -4,7 +4,7 @@ interface ObjetoI {
 }
 
 const basketModule = (function () {
-  var basket: ObjetoI[] = [];
+  const basket: ObjetoI[] = [];
 
   function doSomethingPrivate() {
     console.log('HACIENDO ALGO PRIVADO');

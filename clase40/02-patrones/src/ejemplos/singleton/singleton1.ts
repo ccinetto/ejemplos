@@ -21,6 +21,13 @@ const Singleton = (function () {
 export const ejemploSingleton = () => {
   var instance1 = Singleton.getInstance();
   var instance2 = Singleton.getInstance();
+  var instance3 = Singleton.getInstance();
+  var instance4 = Singleton.getInstance();
 
-  console.log('Same instance? ' + (instance1 === instance2));
+  console.log(
+    'Same instance? ' +
+      (instance1 === instance2 &&
+        instance2 === instance3 &&
+        instance3 == instance4)
+  );
 };

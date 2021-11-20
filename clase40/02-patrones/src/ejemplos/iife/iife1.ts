@@ -4,10 +4,12 @@ const modularPattern = (function () {
   return {
     add: function () {
       sum = sum + 1;
-      return sum;
     },
     reset: function () {
-      return (sum = 0);
+      sum = 0;
+    },
+    getValue: function () {
+      return sum;
     },
   };
 })();
@@ -15,7 +17,11 @@ const modularPattern = (function () {
 export const EjemploIIFE1 = () => {
   // /**Notar que si descomentamos esto typescript nos dice que no existe */
   // console.log(modularPattern.sum);
-  console.log(modularPattern.add()); // console.logs: 1
-  console.log(modularPattern.add()); // console.logs: 2
-  console.log(modularPattern.reset()); // console.logs: 0
+  console.log(modularPattern.getValue());
+  modularPattern.add(); // console.logs: 1
+  console.log(modularPattern.getValue());
+  modularPattern.add(); // console.logs: 1
+  console.log(modularPattern.getValue());
+  modularPattern.reset(); // console.logs: 1
+  console.log(modularPattern.getValue());
 };
