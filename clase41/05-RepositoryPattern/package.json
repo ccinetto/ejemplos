@@ -1,0 +1,27 @@
+{
+  "name": "repository",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "buscar": ".\\node_modules\\.bin\\ts-node index.ts --cmd buscar",
+    "agregar": ".\\node_modules\\.bin\\ts-node index.ts --cmd agregar --nombre Carlos --apellido Perez --DNI 23456789",
+    "updatear": ".\\node_modules\\.bin\\ts-node index.ts --cmd reemplazar --id 619a5c43cd8c847dad64aaeb --nombre Carlos2 --apellido Perez2 --DNI 2345678",
+    "borrar": ".\\node_modules\\.bin\\ts-node index.ts --cmd borrar --id 619a5b7e35ecc17baa98e082",
+    "contar": ".\\node_modules\\.bin\\ts-node index.ts --cmd count",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@types/minimist": "^1.2.1",
+    "@types/mongodb": "^3.6.17",
+    "minimist": "^1.2.5",
+    "mongodb": "^3.6.9"
+  }
+}
