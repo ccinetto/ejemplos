@@ -13,7 +13,6 @@ describe('Product DAO TEST', () => {
       .spyOn(MyMongoClient.prototype, 'connect')
       .mockImplementation(async () => {
         console.log('MOCK CONNECT');
-        new MyMongoClient();
       });
 
     daoTest = new ProductDao();
@@ -29,7 +28,7 @@ describe('Product DAO TEST', () => {
       expect(data).toEqual(mockResponse);
     });
 
-    it('deberia traerme un array vacio si el id que le pido no existe', async () => {
+    it('deberia traerme un array vacio si llamo al get con un id no valido', async () => {
       const mockResponse: ProductI[] = [];
       jest
         .spyOn(MyMongoClient.prototype, 'isValidId')
@@ -101,8 +100,6 @@ describe('Product DAO TEST', () => {
         .spyOn(ProductModel, 'findByIdAndUpdate')
         .mockResolvedValueOnce(mockResponse);
 
-      jest.spyOn(ProductModel, 'findById').mockResolvedValueOnce(mockResponse);
-
       const result = await daoTest.update(_id, newData);
       const expectedResponse = new ProductsDTO(mockResponse);
       expect(result).toEqual(expectedResponse);
@@ -111,13 +108,15 @@ describe('Product DAO TEST', () => {
 
   describe('ProductDao Delete', () => {
     it('deberia borrar correctamente un producto', async () => {
-      const mockDelete = jest
+      const id = '1234';
+      const pepito = jest
         .spyOn(ProductModel, 'findByIdAndDelete')
         .mockResolvedValueOnce(undefined);
 
-      await daoTest.delete('1234');
+      await daoTest.delete(id);
 
-      expect(mockDelete).toHaveBeenCalled();
+      expect(pepito).toHaveBeenCalled();
+      expect(pepito).toHaveBeenCalledWith(id);
     });
   });
 });
