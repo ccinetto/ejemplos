@@ -19,7 +19,7 @@ export const ejemploMinimist = () => {
     '/': operando1 / operando2,
   };
 
-  const output = operaciones[op] ? operaciones[op] : 'wrong op parameter';
+  const output = operaciones[op] || 'wrong op parameter';
 
   console.log(output);
 };

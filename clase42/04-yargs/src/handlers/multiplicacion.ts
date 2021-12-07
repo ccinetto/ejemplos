@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 
 const multiplicacion = (argv: yargs.Arguments) => {
-  console.log('Estoy ejecutando la suma');
+  console.log('Estoy ejecutando la multiplicacion');
   const operando1 = argv.op1 as number;
   const operando2 = argv.op2 as number;
 
