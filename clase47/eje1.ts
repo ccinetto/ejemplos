@@ -1,4 +1,4 @@
-const sayHelloTo = (name: string) => {
+const sayHelloTo = (name: string): string => {
   return `Hello ${name} !`;
 };
 

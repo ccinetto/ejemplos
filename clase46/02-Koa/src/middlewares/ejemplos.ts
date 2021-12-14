@@ -2,7 +2,7 @@ import { Context, Next } from 'koa';
 
 export const middleware1 = (ctx: Context, next: Next) => {
   console.log('APLICO PRIMER MIDDLEWARE 1');
-  ctx.body = { msg: 'Primer Middleware' };
+  ctx.body = { msg1: 'Primer Middleware' };
   next();
 };
 

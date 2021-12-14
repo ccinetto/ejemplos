@@ -7,12 +7,14 @@ const router = new Router({
 
 /* ---------------------- Routes ----------------------- */
 /* API REST Get All */
-router.get('/', (ctx: Context, next: Next) => {
+router.get('/', async (ctx: Context, next: Next) => {
   ctx.body = {
     status: 'success',
     message: libros,
   };
-  next();
+  ctx.status = 201;
+  // throw new Error('HOLA');
+  // await next();
 });
 
 /* API REST Get x ID */
@@ -32,12 +34,15 @@ router.get('/:id', (ctx: Context, next: Next) => {
       message: 'Book Not Found with that id!',
     };
   }
+
+  ctx.set('hola', 'juan carlos');
   next();
 });
 
 /* API REST Post */
 router.post('/', (ctx: Context, next: Next) => {
   // Check if any of the data field not empty
+  console.log(ctx.request.body);
   const { id, name, author } = ctx.request.body;
 
   if (!id || !name || !author) {
