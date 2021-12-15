@@ -1,4 +1,0 @@
-deno install -qAf --unstable https://deno.land/x/denon/denon.ts
-
-mongod --dbpath "../MongoBase"
-denon start
